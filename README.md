@@ -1,6 +1,7 @@
 # AIOps Nexus
 
-<img src="https://github.com/techednelson/aiops-nexus/blob/main/images/aiops-nexus.jpg" width="100">
+<img src="https://github.com/techednelson/aiops-nexus/blob/main/images/aiops-nexus.jpg"
+height="80px" width="100">
 
 ## Quickstart
 
