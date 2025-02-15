@@ -1,6 +1,6 @@
 # AIOps Nexus
 
-<img src="https://github.com/techednelson/aiops-nexus/images/aiops-nexus.jpg" width="100">
+<img src="https://github.com/techednelson/aiops-nexus/blob/main/images/aiops-nexus.jpg" width="100">
 
 ## Quickstart
 
@@ -23,7 +23,6 @@ services:
     container_name: aiops-nexus
     image: webtechnelson/aiops-nexus:latest
     working_dir: /aiops-nexus
-    command: ./aiops-nexus/entrypoint.sh
     environment:
       DEBUG: 1
       WEBHOOK_URL: https://hooks.slack.com/services/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
