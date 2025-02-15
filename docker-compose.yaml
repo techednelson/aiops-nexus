@@ -1,0 +1,28 @@
+services:
+  aiops-nexus:
+    container_name: aiops-nexus
+    build: .
+    working_dir: /aiops-nexus
+    command: ./aiops-nexus/entrypoint.sh
+    environment:
+      DEBUG: 1
+      WEBHOOK_URL: https://hooks.slack.com/services/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    volumes:
+      - ./app:/aiops-nexus/app
+    ports:
+      - "5000:5000"
+      - "11434"
+    restart: on-failure
+  open-webui:
+    container_name: open-webui
+    image: ghcr.io/open-webui/open-webui:main
+    environment:
+      - OLLAMA_BASE_URL=http://aiops-nexus:11434
+    volumes:
+      - open-webui:/app/backend/data
+    ports:
+      - "3000:8080"
+    restart: always
+
+volumes:
+  open-webui:
