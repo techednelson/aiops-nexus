@@ -7,7 +7,6 @@ AIOps Nexus versions are expressed as x.y.z, where x is the major version, y is 
 | Version | Supported          |
 | ------- | ------------------ |
 | 1.0.x   | :white_check_mark: |
-| 1.0.0   | :x:                |
 
 Applicable fixes, including security fixes, are backported to above mentioned versions, depending on severity and feasibility.
 
