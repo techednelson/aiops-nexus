@@ -31,14 +31,14 @@
 
 # 👋 Introducing `AIOps Nexus`
 
-`AIOps-Nexus` is an open-source, **dockerized application** that simplifies IT operations by analyzing logs from monitoring tools like **OpenSearch**, **Elasticsearch**, **Alertmanager**, **Prometheus**, and more. Using free, open-source LLMs, it identifies root causes of issues and generates actionable solutions.
+`AIOps-Nexus` is an open-source, **dockerized application** that simplifies IT operations by analyzing logs from monitoring tools like **OpenSearch**, **Elasticsearch**, **Alertmanager**, **Prometheus**, and more. It uses free, **open-source LLMs** to identify root causes and generate actionable solutions, delivering them via webhooks to platforms like Slack and Discord.
 
-Deployable within your corporate infrastructure (e.g., inside a VPN) or on cloud VMs with controlled access, AIOps-Nexus ensures your data remains secure and never exposed to the internet. This makes it ideal for organizations prioritizing privacy while leveraging AI to enhance operational efficiency with **minimal costs**, limited to the hardware or VM where it is deployed.
+Deployable within corporate infrastructure (e.g., inside a VPN) or on cloud VMs with controlled access, `AIOps Nexus` ensures data security by avoiding internet exposure. It is ideal for organizations prioritizing privacy while leveraging AI to enhance operational efficiency at minimal costs, limited to the hardware or VM where it is deployed.
 
 # 🔥 Key Features
 
-- ✨ **[Dynamic LLM Selection](https://ollama.com/search)**: Choose from various open-source LLMs (e.g., Llama 3, Mistral, DeepSeek-R1, and more via Ollama) to meet specific user needs.
-- 🆓 **Free and Open Source**: Utilize completely free, open-source LLM models without incurring API costs—your only expense is the hardware or VM where the app is deployed.
+- ✨ **[Dynamic LLM Selection](https://ollama.com/search)**: Choose from various **open-source LLMs** (e.g., Llama3, Mistral, DeepSeek-R1, and more via Ollama) to meet specific user needs.
+- 🆓 **Free and Open Source**: Utilize completely free, **open-source LLM** models without incurring API costs—your only expense is the hardware or VM where the app is deployed.
 - 📈 **Log Analysis**: Automatically analyze logs from monitoring tools to identify root causes of incidents.
 - 🎬 **Actionable Solutions**: Generate and deliver solutions via webhooks to platforms like Slack and Discord for team awareness and collaboration.
 - 🧠 **Caching Mechanism**: Optimize performance by caching repeated queries for faster responses.
@@ -61,6 +61,14 @@ curl -X POST http://localhost:5000/aiops/alert \
 -d '{"ERROR": "10.185.248.71 - - [09/Jan/2015:19:12:06 +0000] 808840 \"GET inventoryService/inventory/purchaseItem? userId=20253471&itemId=23434300 HTTP/1.1\" 500 17 \"-\" \"Apache-HttpClient/4.2.6 (java 1.5)\""}'
 
 ```
+> 💡 **Important Notes**
+>
+> The `aiops-nexus:1.0.0` Docker image comes with the pre-installed [llama3.2(3B)](https://ollama.com/library/llama3.2) model, allowing quick startup with minimal hardware (2 CPUs and 4GB RAM). Setting the `LLM` environment variable to a different model will download it on startup, which may take time and require more resources.
+>
+> For larger models according to [ollama reference](https://github.com/ollama/ollama#model-library):
+>- **7B**: At least 8GB RAM
+>- **13B**: At least 16GB RAM
+>- **33B**: At least 32GB RAM 
 ### Docker Compose (Integration with Open-Webui)
 **Ideal for quick deployment on Cloud VMs with controlled access or VMs in a corporate envinment within a VPN. Perfect for companies looking to keep prompts and GPT responses secure without internet exposure. Use it for AIOps log analysis or interact directly with Ollama LLMs through a user-friendly Open-WebUI for technical consultations.**
 ```
@@ -71,8 +79,8 @@ services:
     working_dir: /aiops-nexus
     environment:
       DEBUG: 1
-      WEBHOOK_URL: https://hooks.slack.com/services/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-      LLM: llama3.2
+      WEBHOOK_URL: https://hooks.slack.com/services/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx # slack and discord are compatible at this moment
+      LLM: llama3.2 # if LLM is left blank, pre-installed llama3.2 will be loaded
     volumes:
       - ./app:/aiops-nexus/app
     ports:
@@ -146,9 +154,11 @@ curl -X POST http://localhost:5000/aiops/alert \
 
 # 🏃‍♀️ Deployment
 
-**Comming Soon...**
+🚧 `Comming Soon...`
 
 # 📖 Examples
+
+🚧 `Under construction`
 
 ### Nexus-AIOps: Integration with OpenSearch (Kubernetes Setup)
 - Follow detailed instructions here: [`examples/opensearch/README.md`](./examples/opensearch/README.md)
@@ -174,6 +184,7 @@ This project is licensed under the MIT License - see the [`LICENSE`](LICENSE) fi
 - ✔️ Replace InMemory cache for redis.
 - ✔️ Incorporate embeddings in some way.
 - ✔️ Add realtime processing pipelines with kafka.
+- ✔️ Add support for Teams webhooks.
 
 If you find something is missing, `AIOps Nexus` is listening. Please create a feature request [from here](https://github.com/techednelson/aiops-nexus/issues/new?template=feature_request.md).
 

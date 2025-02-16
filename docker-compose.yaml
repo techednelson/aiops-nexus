@@ -5,8 +5,8 @@ services:
     working_dir: /aiops-nexus
     environment:
       DEBUG: 1
-      WEBHOOK_URL: https://hooks.slack.com/services/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-      LLM: llama3.2
+      WEBHOOK_URL: https://hooks.slack.com/services/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx # slack and discord are compatible at this moment
+      LLM: llama3.2 # if LLM is left blank, pre-installed llama3.2 will be loaded
       ENV: development
     volumes:
       - ./app:/aiops-nexus/app
