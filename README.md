@@ -49,6 +49,8 @@ Deployable within corporate infrastructure (e.g., inside a VPN) or on cloud VMs 
 
 # 🏁 To start using `AIOps Nexus`
 
+First [Install Docker Desktop](https://docs.docker.com/compose/install/) if you don't have installed it yet.
+
 ### Docker
 **Ideal for fast deployment and local testing.**
 ```
