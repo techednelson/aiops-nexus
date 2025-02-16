@@ -1,14 +1,32 @@
-# AIOps Nexus
+# AIOps-Nexus
 
-<img src="https://github.com/techednelson/aiops-nexus/blob/main/images/aiops-nexus.jpg"
-height="80px" width="100">
+<img src="https://github.com/techednelson/aiops-nexus/blob/main/images/aiops-nexus.jpg" width="100">
 
-## Quickstart
+----
+
+AIOps-Nexus is an open-source, **dockerized application** designed to revolutionize IT operations by leveraging **free, open-source LLMs** for root cause analysis and solution generation. This tool integrates seamlessly with popular monitoring systems like **OpenSearch**, **Elasticsearch**, **Alertmanager**, **Prometheus** and more, enabling organizations to harness the power of AI where the only expense is the hardware or VM where the app is deployed.
+
+## Key Features
+
+- **[Dynamic LLM Selection](https://ollama.com/searchp)**: Choose from various open-source LLMs (e.g. llama3, mistral, deepseek-r1 and much more available via Ollama) to meet specific user needs.
+- **Free and Open Source**: Utilize completely free, open-source LLM models without incurring API costs—your where the only expense is the hardware or VM where the app is deployed.
+- **Log Analysis**: Automatically analyze logs from monitoring tools to identify root causes of incidents.
+- **Actionable Solutions**: Generate and deliver solutions via webhooks to platforms like Slack and Discord for team awareness and collaboration.
+- **Caching Mechanism**: Optimize performance by caching repeated queries.
+
+## Why Use AIOps-Nexus?
+
+AIOps-Nexus enables companies and users to integrate AI into their operations effortlessly, supporting incident resolution and operational efficiency at no additional cost beyond infrastructure. By combining cutting-edge AI with a user-friendly interface, this project empowers teams to focus on solving problems rather than managing tools.
+
+## Get Involved
+We welcome contributors! Whether you're a developer, DevOps engineer, SRE, or AI enthusiast, join us in building the future of AIOps. Check out our repository and start contributing today!
+
+## To start using AIOps-Nexu
 
 ### Docker
-***Ideal for fast deployment and testing locally.***
+**Ideal for fast deployment and testing locally.**
 ```
-docker run --name aiops-nexus -p 5000:5000 webtechnelson/aiops-nexus:latest
+docker run --name aiops-nexus LLM=llama3.2 -p 5000:5000 webtechnelson/aiops-nexus:latest
 ```
 ```
 curl -X POST http://localhost:5000/aiops/alert \
@@ -17,7 +35,7 @@ curl -X POST http://localhost:5000/aiops/alert \
 
 ```
 ### Docker Compose (Integration with Open-Webui)
-***Ideal for an easy and fast deployment locally and in VMs with controlled access, recommended for companies interested in keep prompts and gpt responses inside a VPN without accesing the internet. You can use this set up for AIOps and Interact directly with ollama LLMs via the open-webui userfriendly interface.***
+**Ideal for quick and easy deployment locally or on VMs with controlled access, This AIOps-Nexus setup is perfect for companies looking to keep prompts and GPT responses secure within a VPN, without internet exposure. Use it for AIOps log analysis and/or interact directly with Ollama LLMs through a user-friendly Open-WebUI for technical consultations.**
 ```
 services:
   aiops-nexus:
@@ -27,6 +45,7 @@ services:
     environment:
       DEBUG: 1
       WEBHOOK_URL: https://hooks.slack.com/services/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+      LLM: llama3.2
     volumes:
       - ./app:/aiops-nexus/app
     ports:
