@@ -37,7 +37,7 @@ Deployable within corporate infrastructure (e.g., inside a VPN) or on cloud VMs 
 
 # 🔥 Key Features
 
-- ✨ **[Dynamic LLM Selection](https://ollama.com/search)**: Choose from various **open-source LLMs** (e.g., Llama3, Mistral, DeepSeek-R1, and more via Ollama) to meet specific user needs.
+- ✨ **[Dynamic LLM Selection](https://ollama.com/search)**: Choose from various **open-source LLMs** (e.g., [Llama3](https://ai.meta.com/blog/meta-llama-3/), [Mistral](https://mistral.ai/en), [DeepSeek-R1](https://www.deepseek.com/), and more via Ollama) to meet specific user needs.
 - 🆓 **Free and Open Source**: Utilize completely free, **open-source LLM** models without incurring API costs—your only expense is the hardware or VM where the app is deployed.
 - 📈 **Log Analysis**: Automatically analyze logs from monitoring tools to identify root causes of incidents.
 - 🎬 **Actionable Solutions**: Generate and deliver solutions via webhooks to platforms like Slack and Discord for team awareness and collaboration.
@@ -63,7 +63,7 @@ curl -X POST http://localhost:5000/aiops/alert \
 ```
 > 💡 **Important Notes**
 >
-> The `aiops-nexus:1.0.0` Docker image comes with the pre-installed [llama3.2(3B)](https://ollama.com/library/llama3.2) model, allowing quick startup with minimal hardware (2 CPUs and 4GB RAM). Setting the `LLM` environment variable to a different model will download it on startup, which may take time and require more resources.
+> The `aiops-nexus:1.0.0` Docker image comes with the pre-installed [llama3.2(3B)](https://ollama.com/library/llama3.2) model, allowing quick startup with minimal hardware (**2 CPUs** and **4GB RAM**). Setting the `LLM` environment variable to a different model will download it on startup, which may take time and require more resources.
 >
 > For larger models according to [ollama reference](https://github.com/ollama/ollama#model-library):
 >- **7B**: At least 8GB RAM
