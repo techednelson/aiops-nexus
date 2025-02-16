@@ -1,6 +1,22 @@
 # Stage 1: Ollama service
 FROM ollama/ollama:latest AS ollama
 
+# Install dependencies
+RUN apt-get update && apt-get install -y \
+    curl \
+    tar \
+    && rm -rf /var/lib/apt/lists/*
+
+# Download and install wait4x
+RUN curl -#LO https://github.com/atkrad/wait4x/releases/latest/download/wait4x-linux-amd64.tar.gz && \
+    tar --one-top-level -xvf wait4x-linux-amd64.tar.gz && \
+    mv ./wait4x-linux-amd64/wait4x /usr/local/bin/wait4x && \
+    chmod +x /usr/local/bin/wait4x && \
+    rm -rf wait4x-linux-amd64.tar.gz wait4x-linux-amd64
+
+# Start ollama server, wait4x to be ready and preinstall llama3,2 as default LLM
+RUN nohup bash -c "ollama serve &" && wait4x http http://127.0.0.1:11434 && ollama pull llama3.2
+
 # Stage 2: Python builder image
 FROM python:3.11-slim-bullseye AS builder
 
@@ -31,21 +47,13 @@ ENV VIRTUAL_ENV=/aiops-nexus/.venv \
 COPY --from=builder ${VIRTUAL_ENV} ${VIRTUAL_ENV}
 COPY --from=ollama /usr/bin/ollama /usr/bin/ollama
 COPY --from=ollama /usr/lib/ollama /usr/lib/ollama
+COPY --from=ollama /root/.ollama/models /root/.ollama/models
 
 COPY app /aiops-nexus/app
 
 EXPOSE 5000 11434
 
-RUN echo '#!/bin/bash \n \
-ollama serve & \n \
-sleep 5 \n \
-if ! ollama pull $LLM; then \n \
-    echo "Failed to pull LLM, falling back to llama3.2:3b" \n \
-    export LLM=llama3.2:3b \n \
-    ollama pull $LLM \n \
-fi \n \
-echo "Running LLM: $LLM" \n \
-python /aiops-nexus/app/main.py' > /aiops-nexus/entrypoint.sh && \
-chmod +x /aiops-nexus/entrypoint.sh
+COPY ./entrypoint.sh /aiops-nexus/entrypoint.sh
+RUN chmod +x /aiops-nexus/entrypoint.sh
 
 ENTRYPOINT ["/aiops-nexus/entrypoint.sh"]

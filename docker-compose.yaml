@@ -1,12 +1,13 @@
 services:
   aiops-nexus:
     container_name: aiops-nexus
-    build: .
+    image: webtechnelson/aiops-nexus:1.0.0
     working_dir: /aiops-nexus
-    command: ./aiops-nexus/entrypoint.sh
     environment:
       DEBUG: 1
       WEBHOOK_URL: https://hooks.slack.com/services/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+      LLM: llama3.2
+      ENV: development
     volumes:
       - ./app:/aiops-nexus/app
     ports:
@@ -23,6 +24,8 @@ services:
     ports:
       - "3000:8080"
     restart: always
+    depends_on:
+      - aiops-nexus
 
 volumes:
   open-webui:
