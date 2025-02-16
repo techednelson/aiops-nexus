@@ -52,7 +52,7 @@ Deployable within your corporate infrastructure (e.g., inside a VPN) or on cloud
 ### Docker
 **Ideal for fast deployment and local testing.**
 ```
-docker run --name aiops-nexus LLM=llama3.2 -p 5000:5000 webtechnelson/aiops-nexus:latest
+docker run --name aiops-nexus LLM=llama3.2 -p 5000:5000 webtechnelson/aiops-nexus:1.0.0
 ```
 Test `AIOps Nexus` api with:
 ```
@@ -67,7 +67,7 @@ curl -X POST http://localhost:5000/aiops/alert \
 services:
   aiops-nexus:
     container_name: aiops-nexus
-    image: webtechnelson/aiops-nexus:latest
+    image: webtechnelson/aiops-nexus:1.0.0
     working_dir: /aiops-nexus
     environment:
       DEBUG: 1
