@@ -1,0 +1,3 @@
+# Unhealthy App
+
+This application is designed to simulate IT operations errors with the primary objective of generating and ingesting logs into observability tools such as **Elasticsearch**, **OpenSearch**, and others for advanced AI-driven analysis. The purpose is to help users understand that this app creates realistic synthetic logs, which can be analyzed by AIOps platforms like `AIOps Nexus` to perform root cause analysis and provide actionable solutions for operational issues.

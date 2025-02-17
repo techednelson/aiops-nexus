@@ -1,0 +1,5 @@
+singleNode: true
+
+extraEnvs:
+  - name: OPENSEARCH_INITIAL_ADMIN_PASSWORD
+    value: Tr@ff!c89Light

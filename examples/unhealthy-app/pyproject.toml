@@ -1,0 +1,19 @@
+[project]
+name = "unhealthy-app"
+version = "1.0.0"
+description = ""
+authors = [
+    {name = "Nelson Sandoval",email = "techednelson@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+    "fastapi (>=0.115.8,<0.116.0)",
+    "uvicorn[standard] (>=0.34.0,<0.35.0)"
+]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+

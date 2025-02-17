@@ -1,2 +1,5 @@
 .env
 */__pycache__
+*/*/ecommerce_error_logs.log
+.vscode
+*/*/.vagrant

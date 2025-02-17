@@ -1,0 +1,20 @@
+config:
+    outputs: |
+        [OUTPUT]
+            Name opensearch
+            Match kube.*
+            Host opensearch-cluster-master
+            Port 9200
+            Index microk8s-logs
+            Suppress_Type_Name On
+            tls On
+            tls.verify off
+            HTTP_User admin
+            HTTP_Passwd Tr@ff!c89Light
+            Trace_Error On
+            Time_Key @timestamp
+
+            Logstash_Format On
+            Logstash_Prefix microk8s-logs
+            Logstash_DateFormat %Y.%m.%d
+            Replace_Dots On

@@ -1,7 +1,7 @@
 services:
   aiops-nexus:
     container_name: aiops-nexus
-    image: webtechnelson/aiops-nexus:1.0.0
+    image: webtechnelson/aiops-nexus:1.1.0
     working_dir: /aiops-nexus
     environment:
       DEBUG: 1

@@ -38,7 +38,7 @@ class AlertResponse(BaseModel):
     status: str
     message: str
 
-@app.post("/aiops/alert", response_model=AlertResponse)
+@app.post("/api/alert", response_model=AlertResponse)
 async def receive_alert(request: Request) -> JSONResponse:
     """Rest endpoint to handle alerts sent by monitoring tool and to be anilsed by ollama llms"""
     try:
