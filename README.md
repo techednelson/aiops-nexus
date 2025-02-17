@@ -156,13 +156,13 @@ curl -X POST http://localhost:5000/api/alert \
 
 # 📖 Nexus AIOps Integration: Proven Examples for Seamless Operations
 
-### OpenSearch and Slack (Kubernetes Setup)
+### Integration with OpenSearch and Slack (Kubernetes Setup)
 
 🚧 `Under construction`
 
 - Follow detailed instructions here: [`examples/opensearch/README.md`](./examples/opensearch/README.md)
 
-### Integration withElasticsearch and Discord (Docker Compose Setup)
+### Integration with Elasticsearch and Discord (Docker Compose Setup)
 
 🚧 `Comming Soon...`
 
