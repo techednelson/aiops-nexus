@@ -47,6 +47,11 @@ Deployable within corporate infrastructure (e.g., inside a VPN) or on cloud VMs 
 
 `AIOps Nexus` enables companies and users to integrate AI into their operations effortlessly, supporting incident resolution and operational efficiency at no additional cost beyond infrastructure. By combining cutting-edge AI with a user-friendly interface, this project empowers teams to focus on solving problems rather than managing tools.
 
+Liked it? Please give a ⭐️ to <b>AIOps Nexus</b>.
+
+## Many Thanks to all the `AIOps Nexus` who has supported this project with stars(⭐)
+
+
 # 🏁 To start using `AIOps Nexus`
 
 First [Install Docker Desktop](https://docs.docker.com/compose/install/) if you don't have installed it yet.
