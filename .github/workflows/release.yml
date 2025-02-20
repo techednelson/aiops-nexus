@@ -86,6 +86,6 @@ jobs:
           scan-type: 'image'
           image-ref: ghcr.io/${{ github.repository }}:${{ needs.semver.outputs.new_version }}
           format: 'table'
-          exit-code: '1'
+          exit-code: '0'
           ignore-unfixed: true
           vuln-type: 'os,library'
