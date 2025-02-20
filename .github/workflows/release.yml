@@ -47,6 +47,21 @@ jobs:
           tag: ${{ env.new_version }}
           message: '${{ env.new_version }}: PR #${{ github.event.pull_request.number }} ${{ github.event.pull_request.title }}'
 
+  release:
+    needs: semver
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Create release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ needs.semver.outputs.new_version }}
+        run: |
+          gh release create "$tag" \
+              --repo="$GITHUB_REPOSITORY" \
+              --title="${GITHUB_REPOSITORY#*/} ${tag#v}" \
+              --generate-notes
+
   docker:
     needs: semver
     runs-on: ubuntu-latest
