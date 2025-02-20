@@ -49,7 +49,7 @@ Deployable within corporate infrastructure (e.g., inside a VPN) or on cloud VMs 
 
 Liked it? Please give a ⭐️ to <b>AIOps Nexus</b>.
 
-## Many Thanks to all the `AIOps Nexus` who has supported this project with stars(⭐)
+## Many Thanks to all who has supported this project with stars(⭐)
 
 
 # 🏁 To start using `AIOps Nexus`
