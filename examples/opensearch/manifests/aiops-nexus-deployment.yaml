@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: aiops-nexus
-        image: webtechnelson/aiops-nexus:1.1.0
+        image: ghcr.io/techednelson/aiops-nexus:latest
         env:
         - name: WEBHOOK_URL
           value: https://hooks.slack.com/services/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx # slack and discord are compatible at this moment

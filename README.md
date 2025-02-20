@@ -54,7 +54,7 @@ First [Install Docker Desktop](https://docs.docker.com/compose/install/) if you 
 ### Docker
 **Ideal for fast deployment and local testing.**
 ```
-docker run --name aiops-nexus LLM=llama3.2 -p 5000:5000 webtechnelson/aiops-nexus:1.1.0
+docker run --name aiops-nexus LLM=llama3.2 -p 5000:5000 ghcr.io/techednelson/aiops-nexus:latest
 ```
 Test `AIOps Nexus` api with:
 ```
@@ -77,7 +77,7 @@ curl -X POST http://localhost:5000/api/alert \
 services:
   aiops-nexus:
     container_name: aiops-nexus
-    image: webtechnelson/aiops-nexus:1.1.0
+    image: ghcr.io/techednelson/aiops-nexus:latest
     working_dir: /aiops-nexus
     environment:
       DEBUG: 1
