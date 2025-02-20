@@ -47,13 +47,31 @@ ENV VIRTUAL_ENV=/aiops-nexus/.venv \
 COPY --from=builder ${VIRTUAL_ENV} ${VIRTUAL_ENV}
 COPY --from=ollama /usr/bin/ollama /usr/bin/ollama
 COPY --from=ollama /usr/lib/ollama /usr/lib/ollama
-COPY --from=ollama /root/.ollama/models /root/.ollama/models
+COPY --from=ollama /root/.ollama /root/.ollama
 
 COPY app /aiops-nexus/app
 
 EXPOSE 5000 11434
 
-COPY ./entrypoint.sh /aiops-nexus/entrypoint.sh
-RUN chmod +x /aiops-nexus/entrypoint.sh
+# Create the entrypoint script
+RUN echo '#!/bin/bash \n \
+ollama serve & \n \
+echo "Running LLM: $LLM" \n \
+sleep 5 \n \
+set_default_llm () { \n \
+    echo "LLM was not set or invalid, falling back to pre-installed model llama3.2" \n \
+    export LLM=llama3.2 \n \
+} \n \
+if [[ -z "$LLM" ]]; then \n \
+    set_default_llm \n \
+else \n \
+    if ! ollama pull "$LLM"; then \n \
+        set_default_llm \n \
+    fi \n \
+fi \n \
+echo "Running LLM: $LLM" \n \
+python /aiops-nexus/app/main.py' > /aiops-nexus/entrypoint.sh && \
+chmod +x /aiops-nexus/entrypoint.sh
+
 
 ENTRYPOINT ["/aiops-nexus/entrypoint.sh"]

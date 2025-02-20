@@ -1,7 +1,9 @@
 services:
   aiops-nexus:
     container_name: aiops-nexus
-    image: ghcr.io/techednelson/aiops-nexus:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
     working_dir: /aiops-nexus
     environment:
       DEBUG: 1

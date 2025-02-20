@@ -59,7 +59,7 @@ First [Install Docker Desktop](https://docs.docker.com/compose/install/) if you 
 ### Docker
 **Ideal for fast deployment and local testing.**
 ```
-docker run --name aiops-nexus LLM=llama3.2 -p 5000:5000 ghcr.io/techednelson/aiops-nexus:latest
+docker run --name aiops-nexus -e LLM=llama3.2 -p 5000:5000 ghcr.io/techednelson/aiops-nexus:latest
 ```
 Test `AIOps Nexus` api with:
 ```
